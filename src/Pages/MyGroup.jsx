@@ -134,8 +134,15 @@ const MyGroup = () => {
                                                                     <label>Description*</label>
                                                                     <textarea name="description" placeholder="Describe your book club, what you'll read, and what members can expect" className='input w-full h-28 my-2'></textarea>
                                                                 </div>
-                                                                <div className='grid grid-cols-2 gap-4'>
-
+                                                                <div className='grid grid-cols-2 gap-4 my-3'>
+                                                                    <div>
+                                                                        <label className=''>Your Name</label>
+                                                                        <input type="text" readOnly name='displayName' value={oneCard?.displayName} className="input h-11  my-2  w-full font-extrabold cursor-not-allowed" />
+                                                                    </div>
+                                                                    <div>
+                                                                        <label className=''>Your Email</label>
+                                                                        <input type="text" readOnly name='email' value={oneCard?.email} className="input h-11  my-2  w-full font-extrabold cursor-not-allowed " />
+                                                                    </div>
                                                                 </div>
                                                                 <div className='flex  my-3 justify-center'>
                                                                     <button className='btn btn-primary w-full'>Update Now</button>

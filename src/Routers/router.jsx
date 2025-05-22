@@ -9,6 +9,7 @@ import AllGroup from "../Pages/AllGroup";
 import MyGroup from "../Pages/MyGroup";
 import ErrorPage from "../Pages/ErrorPage";
 import MyGroupViewDetails from "../Pages/MyGroupViewDetails";
+import PrivateRouter from "../Context/PrivateRouter";
 
 export const router = createBrowserRouter([
     {
@@ -30,11 +31,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/create-group",
-                Component: CreateGroup
+                element: <PrivateRouter>
+                    <CreateGroup></CreateGroup>
+                </PrivateRouter>
             },
             {
                 path: "/group-details",
-                Component: GroupDetailsPage
+                element: <PrivateRouter>
+                    <GroupDetailsPage></GroupDetailsPage>
+                </PrivateRouter>
             },
             {
                 path: "/all-group",
@@ -44,7 +49,9 @@ export const router = createBrowserRouter([
             {
                 path: "/my-group/:email",
                 loader: ({ params }) => fetch(`http://localhost:3000/create-group/${params.email}`),
-                Component: MyGroup
+                element: <PrivateRouter>
+                    <MyGroup></MyGroup>
+                </PrivateRouter>
 
             },
             {
