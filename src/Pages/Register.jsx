@@ -54,7 +54,13 @@ const Register = () => {
                 // …
             }).then(res => res.json()).then(data => console.log(data))
             console.log(allData)
-        }).catch(() => setError("Already create account"))
+        }).catch(() => {
+             Swal.fire({
+                title: "Already create account",
+                icon: "error",
+                draggable: true
+            });
+        })
 
     }
     return (

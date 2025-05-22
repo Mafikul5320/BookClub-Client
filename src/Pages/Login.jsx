@@ -2,21 +2,54 @@ import React, { use } from 'react';
 import LoginAnimation from '../../public/AnimationLoginAnimation.json'
 import Lottie from 'lottie-react';
 import { BookOpen } from 'lucide-react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import { GoogleAuthProvider } from 'firebase/auth';
+import Swal from 'sweetalert2';
 const Login = () => {
     const provider = new GoogleAuthProvider();
+    const navigate = useNavigate()
     const { SignIn, SignInGoogle } = use(AuthContext)
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
         const fromData = new FormData(form)
         const { email, password } = Object.fromEntries(fromData.entries())
-        SignIn(email, password).then(res => console.log(res)).catch(error => console.log(error))
+        SignIn(email, password).then(res => {
+            console.log(res)
+            Swal.fire({
+                icon: "success",
+                title: "Login Successfull",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            navigate("/")
+        }).catch(()=> {
+            Swal.fire({
+                icon: "error",
+                title: "Failed to Login!",
+                showConfirmButton: false,
+                timer: 1700
+            });
+        })
     }
     const handelGoogleLogin = () => {
-        SignInGoogle(provider).then((res) => console.log(res)).catch(error => console.log(error))
+        SignInGoogle(provider).then(() => {
+            navigate("/")
+            Swal.fire({
+                icon: "success",
+                title: "Login Successfull",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }).catch(() => {
+            Swal.fire({
+                icon: "error",
+                title: "Failed to Login!",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        })
     }
     return (
         <div className='flex justify-center my-30 mx-auto'>
