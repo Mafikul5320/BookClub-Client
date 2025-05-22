@@ -5,6 +5,7 @@ import { auth } from '../Firebase/Firebase.init';
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
+    const [Loader, setLoader] = useState(true)
 
     const Register = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -30,6 +31,7 @@ const AuthProvider = ({ children }) => {
             else {
                 console.log("Log Out User")
             }
+            setLoader(false)
         })
         return () => {
             unsubscrib()
@@ -43,7 +45,8 @@ const AuthProvider = ({ children }) => {
         user,
         setUser,
         SignOut,
-        UpdateUser
+        UpdateUser,
+        Loader
     }
 
     return (

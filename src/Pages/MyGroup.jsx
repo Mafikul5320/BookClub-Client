@@ -3,6 +3,8 @@ import { Edit, Trash2 } from 'lucide-react';
 import { Fade } from 'react-awesome-reveal';
 import { Link, useLoaderData, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyGroup = () => {
     const data = useLoaderData();
@@ -22,17 +24,12 @@ const MyGroup = () => {
             },
             body: JSON.stringify(updateData)
         }).then(res => res.json()).then(data => {
-            if (data.modifiedCount) {
-                Swal.fire({
-                    icon: "success",
-                    title: "Group Update Successfull!",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            }
             console.log(data)
         })
 
+    }
+    const Handeltost=()=>{
+        toast.success("Group Update Successfull!")
     }
     const HandelDelete = (id) => {
         fetch(`http://localhost:3000/create-group/data/${id}`, {
@@ -145,7 +142,9 @@ const MyGroup = () => {
                                                                     </div>
                                                                 </div>
                                                                 <div className='flex  my-3 justify-center'>
-                                                                    <button className='btn btn-primary w-full'>Update Now</button>
+                                                                    
+                                                                    <button onClick={Handeltost} className='btn btn-primary w-full'>Update Now</button>
+                                                                    <ToastContainer/>
                                                                 </div>
                                                             </form>
                                                         </div>

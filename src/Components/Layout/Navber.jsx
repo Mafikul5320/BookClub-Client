@@ -1,15 +1,27 @@
 import { BookOpen, SunMoon } from 'lucide-react';
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 
 const Navber = () => {
     const { user, SignOut, setUser } = use(AuthContext)
+    const [theme, setTheme] = useState(false)
     const HandelLogOut = () => {
         SignOut().then(res => {
             console.log(res)
             setUser(null)
         })
+    }
+    useEffect(() => {
+        const root = document.documentElement;
+        if (theme) {
+            root.classList.add("dark");
+        } else {
+            root.classList.remove("dark");
+        }
+    }, [theme])
+    const handelThemeChange = () => {
+
     }
     console.log(user)
     return (
@@ -30,10 +42,10 @@ const Navber = () => {
                     </Link>
                 </div>
                 <div className='flex items-center space-x-2'>
-                    <SunMoon />
+                    <button onClick={()=>handelThemeChange(setTheme(!theme))}> {theme? <SunMoon />: "click"}</button>
                     {user ? <>
                         <div className='relative group'>
-                            <img className='w-13 h-13 rounded-full border-2 border-blue-500' src={user.photoURL} />
+                            <img className='w-13 h-13 rounded-full border-2 border-blue-500 animate-spin' src={user.photoURL} />
                             <span className='font-bold absolute -top-4 right-4 opacity-0 group-hover:opacity-100'>{user && user.displayName}</span>
                         </div> <button onClick={HandelLogOut} className='btn ml-3'>LogOut</button>
                     </> : <>
