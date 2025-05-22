@@ -32,7 +32,10 @@ const Navber = () => {
                 <div className='flex items-center space-x-2'>
                     <SunMoon />
                     {user ? <>
-                        {user.email} <button onClick={HandelLogOut} className='btn ml-3'>LogOut</button>
+                        <div className='relative group'>
+                            <img className='w-13 h-13 rounded-full border-2 border-blue-500' src={user.photoURL} />
+                            <span className='font-bold absolute -top-4 right-4 opacity-0 group-hover:opacity-100'>{user && user.displayName}</span>
+                        </div> <button onClick={HandelLogOut} className='btn ml-3'>LogOut</button>
                     </> : <>
                         <Link to={"/login"}>
                             <button className='btn btn-primary'>Login</button>
