@@ -1,10 +1,23 @@
 import { Calendar, MapPin, Users } from 'lucide-react';
 import React from 'react';
 import { useLoaderData } from 'react-router';
+import { toast, ToastContainer } from 'react-toastify';
 
 const MyGroupViewDetails = () => {
     const data = useLoaderData()
-    const { _id, photoURL, members, location, gp_name, email, displayName, description, date, book_category } = data
+    const { _id, photoURL, members, location, gp_name, email, displayName, description, date, book_category } = data;
+    const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+    
+        const formattedDate = `${year}-${month}-${day}`;
+    
+        const limited = date == formattedDate;
+        const handelSuccess = () => {
+            toast.success("Group Join Successfull!")
+        }
+    
     return (
         <div className="container mx-auto px-4 py-10">
             <div className=" bg-[#f5f8f5] rounded-lg shadow-md overflow-hidden">
@@ -47,14 +60,22 @@ const MyGroupViewDetails = () => {
                     </div>
 
                     <div className="mt-6">
-                        <button
-                            disabled={false}
-                            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                            data-tooltip-id="join-tooltip"
-                            data-tooltip-content="Join this book club to participate in discussions"
-                        >
-                            Join Group
-                        </button>
+                        {
+                            limited ? <>
+                                <button onClick={handelSuccess}
+                                    disabled={false}
+                                    className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                                >
+                                    Join Group
+                                </button> <ToastContainer />
+                            </> : <button
+                                disabled={true}
+                                className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 cursor-not-allowed transition-colors"
+                            >
+                                Expired
+
+                            </button>
+                        }
 
                     </div>
 

@@ -8,29 +8,37 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const MyGroup = () => {
     const data = useLoaderData();
-    const [infoData, setInfoData] = useState(data)
-    console.log(data)
+    const [infoData, setInfoData] = useState(data);
     const navigate = useNavigate();
+
     const Handelsubmit = (e, id) => {
-        e.preventDefault()
+        e.preventDefault();
         const from = e.target;
-        const fromdata = new FormData(from)
+        const fromdata = new FormData(from);
         const updateData = Object.fromEntries(fromdata.entries());
-        console.log(updateData)
+
         fetch(`http://localhost:3000/create-group/data/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(updateData)
-        }).then(res => res.json()).then(data => {
-            console.log(data)
         })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0 || data.acknowledged) {
+                    toast.success("Group Update Successful!");
+                } else {
+                    toast.info("No changes made.");
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                toast.error("Update failed!");
+            });
+    };
 
-    }
-    const Handeltost=()=>{
-        toast.success("Group Update Successfull!")
-    }
     const HandelDelete = (id) => {
         fetch(`http://localhost:3000/create-group/data/${id}`, {
             method: "DELETE",
@@ -41,10 +49,11 @@ const MyGroup = () => {
                 setInfoData(groupData)
             }
         })
-    }
+    };
 
     return (
         <div className="container mx-auto px-4 py-10">
+            <ToastContainer position="top-right" autoClose={3000} />
             <Fade triggerOnce>
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">My Book Clubs</h1>
@@ -90,7 +99,7 @@ const MyGroup = () => {
                                                         <form method="dialog">
                                                             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                                         </form>
-                                                        <div className='  p-9 my-10 rounded-2xl'>
+                                                        <div className='p-9 my-10 rounded-2xl'>
                                                             <h1 className='text-xl pt-4 pb-8 font-semibold'>Create a New Book Club</h1>
                                                             <form onSubmit={(e) => Handelsubmit(e, oneCard._id)}>
                                                                 <label>Group Name*</label>
@@ -133,24 +142,21 @@ const MyGroup = () => {
                                                                 </div>
                                                                 <div className='grid grid-cols-2 gap-4 my-3'>
                                                                     <div>
-                                                                        <label className=''>Your Name</label>
+                                                                        <label>Your Name</label>
                                                                         <input type="text" readOnly name='displayName' value={oneCard?.displayName} className="input h-11  my-2  w-full font-extrabold cursor-not-allowed" />
                                                                     </div>
                                                                     <div>
-                                                                        <label className=''>Your Email</label>
+                                                                        <label>Your Email</label>
                                                                         <input type="text" readOnly name='email' value={oneCard?.email} className="input h-11  my-2  w-full font-extrabold cursor-not-allowed " />
                                                                     </div>
                                                                 </div>
-                                                                <div className='flex  my-3 justify-center'>
-                                                                    
-                                                                    <button onClick={Handeltost} className='btn btn-primary w-full'>Update Now</button>
-                                                                    <ToastContainer/>
+                                                                <div className='flex my-3 justify-center'>
+                                                                    <button className='btn btn-primary w-full'>Update Now</button>
                                                                 </div>
                                                             </form>
                                                         </div>
                                                     </div>
                                                 </dialog>
-
                                                 <button onClick={() => HandelDelete(oneCard._id)} className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300">
                                                     <Trash2 className="h-4 w-4" />
                                                 </button>

@@ -3,10 +3,10 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const FeaturedGroupsCard = ({ singleData }) => {
-    const { gp_name, description, available_time, displayName, photoURL, book_category,members } = singleData
+    const { gp_name, description, available_time, displayName, photoURL, book_category,members,_id } = singleData
     console.log(singleData)
     return (
-        <Link to={"/group-details"}>
+        <Link to={`/group-details/${_id}`}>
             <div className='my-8'>
                 <div className='bg-white  shadow-xl rounded-[7px]'>
                     <div className='relative   overflow-hidden'>
