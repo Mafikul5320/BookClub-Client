@@ -7,7 +7,7 @@ const FeaturedGroupsCard = ({ singleData }) => {
     console.log(singleData)
     return (
         <Link to={`/group-details/${_id}`}>
-            <div className='my-8'>
+            <div>
                 <div className='bg-white  shadow-xl rounded-[7px]'>
                     <div className='relative   overflow-hidden'>
                         <img className='h-48 w-full object-cover duration-300 transition-transform hover:scale-105' src={photoURL} />

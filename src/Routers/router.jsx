@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
                 </PrivateRouter>
             },
             {
-                path: "/all-group",
+                path: "/all-group/",
                 loader: () => fetch("http://localhost:3000/create-group/data"),
                 Component: AllGroup
             },

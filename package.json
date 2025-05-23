@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "type": "module",
     "@tailwindcss/vite": "^4.1.7",
     "firebase": "^11.8.0",
     "lottie-react": "^2.4.1",

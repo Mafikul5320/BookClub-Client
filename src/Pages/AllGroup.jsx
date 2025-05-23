@@ -35,7 +35,7 @@ const AllGroup = () => {
                     </div>
                 </div>
             </div>
-            <div className='my-22 grid grid-cols-3 gap-6 w-11/13  mx-auto'>
+            <div className='my-22 grid grid-cols-1 md:grid-cols-3 gap-6 w-11/12  mx-auto'>
                 {
                     data.map(onedata=><div className='bg-white  shadow-xl rounded-[7px]'>
                     <div className='relative   overflow-hidden'>
@@ -62,7 +62,7 @@ const AllGroup = () => {
                             </div>
 
                         </div>
-                        <Link to={"/group-details"}>
+                        <Link to={`/group-details/${onedata._id}`}>
                             <div className='flex justify-center my-2'>
                                 <button className='btn btn-primary w-full'>See More</button>
                             </div>

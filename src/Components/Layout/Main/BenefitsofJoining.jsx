@@ -6,7 +6,7 @@ const BenefitsofJoining = () => {
         <div className='bg-[#f5f8f5] my-8 py-8 space-y-4 '>
             <h1 className='text-center text-3xl font-bold'>Benefits of Joining a Book Club</h1>
             <p className='text-center text-sm'>Connecting readers has never been easier. Start your <br /> literary journey in three simple steps.</p>
-            <div className='grid grid-cols-3 w-11/13 mx-auto gap-6'>
+            <div className='grid grid-cols-1 md:grid-cols-3 w-11/13 mx-auto gap-6'>
                 <div className='text-center bg-white p-3 space-y-4 py-19 shadow-lg '>
                     <span className='flex justify-center '>
                         <svg className="w-15 h-15 bg-amber-200 p-3 rounded-full text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

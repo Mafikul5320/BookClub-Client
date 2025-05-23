@@ -66,7 +66,7 @@ const HowtoStart = () => {
 
                         <div className="mt-12 text-center">
                             <Link
-                                to="/createGroup"
+                                to="/create-group"
                                 className="bg-blue-600 hover:bg-blue-700 text-white py-3 px-8 rounded-md text-lg font-medium transition-colors"
                             >
                                 Start Your Book Club Now
