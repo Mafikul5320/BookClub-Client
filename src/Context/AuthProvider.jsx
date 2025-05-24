@@ -10,18 +10,23 @@ const AuthProvider = ({ children }) => {
 
 
     const Register = (email, password) => {
+        setLoader(true)
         return createUserWithEmailAndPassword(auth, email, password)
     };
     const SignIn = (email, password) => {
+        setLoader(true)
         return signInWithEmailAndPassword(auth, email, password)
     };
     const SignInGoogle = (provider) => {
+        setLoader(true)
         return signInWithPopup(auth, provider)
     };
     const SignOut = () => {
+        setLoader(true)
         return signOut(auth)
     };
     const UpdateUser = (updateInfo) => {
+        setLoader(true)
         return updateProfile(auth.currentUser, updateInfo)
     };
 

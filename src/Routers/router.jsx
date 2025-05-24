@@ -10,6 +10,7 @@ import MyGroup from "../Pages/MyGroup";
 import ErrorPage from "../Pages/ErrorPage";
 import MyGroupViewDetails from "../Pages/MyGroupViewDetails";
 import PrivateRouter from "../Context/PrivateRouter";
+import Loading from "../Components/Layout/Main/Loading";
 
 export const router = createBrowserRouter([
     {
@@ -19,7 +20,8 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 loader: () => fetch("https://assignment-10-server-woad-two.vercel.app/create-group/data"),
-                Component: MainLayout
+                Component: MainLayout,
+                HydrateFallback: Loading
             },
             {
                 path: "/register",
@@ -38,14 +40,19 @@ export const router = createBrowserRouter([
             {
                 path: "/group-details/:id",
                 loader: ({ params }) => fetch(`https://assignment-10-server-woad-two.vercel.app/create-group/data/${params.id}`),
+                
                 element: <PrivateRouter>
                     <GroupDetailsPage></GroupDetailsPage>
                 </PrivateRouter>
+                
+            
             },
             {
                 path: "/all-group/",
                 loader: () => fetch("https://assignment-10-server-woad-two.vercel.app/create-group/data"),
-                Component: AllGroup
+                Component: AllGroup,
+                HydrateFallback: Loading
+                
             },
             {
                 path: "/my-group/:email",
@@ -56,9 +63,10 @@ export const router = createBrowserRouter([
 
             },
             {
-                path: "//view-Details/:id",
+                path: "/view-Details/:id",
                 loader: ({ params }) => fetch(`https://assignment-10-server-woad-two.vercel.app/create-group/data/${params.id}`),
-                Component: MyGroupViewDetails
+                Component: MyGroupViewDetails,
+                HydrateFallback: Loading
             },
             {
                 path: "*",

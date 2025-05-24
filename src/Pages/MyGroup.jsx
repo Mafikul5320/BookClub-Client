@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Edit, Trash2 } from 'lucide-react';
 import { Fade } from 'react-awesome-reveal';
 import { Link, useLoaderData, useNavigate } from 'react-router';
-import Swal from 'sweetalert2';
+
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -56,7 +56,7 @@ const MyGroup = () => {
             <ToastContainer position="top-right" autoClose={3000} />
             <Fade triggerOnce>
                 <div className="mb-8">
-                    <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">My Book Clubs</h1>
+                    <h1 className="text-3xl font-bold mb-2 ">My Book Clubs</h1>
                     <p className="text-gray-600 dark:text-gray-400">Manage the book clubs you've created</p>
                 </div>
 
