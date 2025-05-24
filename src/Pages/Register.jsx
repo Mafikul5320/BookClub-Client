@@ -7,7 +7,7 @@ import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
 
 const Register = () => {
-    const { Register, UpdateUser } = use(AuthContext)
+    const { Register, UpdateUser, themeToggle } = use(AuthContext)
     const [error, setError] = useState("")
 
     const handleSubmit = (e) => {
@@ -38,12 +38,12 @@ const Register = () => {
                     icon: "success",
                     draggable: true
                 });
-            }).catch(()=>{
+            }).catch(() => {
                 Swal.fire({
-                title: "Register Failed",
-                icon: "error",
-                draggable: true
-            });
+                    title: "Register Failed",
+                    icon: "error",
+                    draggable: true
+                });
             })
             fetch("https://assignment-10-server-woad-two.vercel.app/users", {
                 method: "POST",
@@ -55,7 +55,7 @@ const Register = () => {
             }).then(res => res.json()).then(data => console.log(data))
             console.log(allData)
         }).catch(() => {
-             Swal.fire({
+            Swal.fire({
                 title: "Already create account",
                 icon: "error",
                 draggable: true
@@ -70,7 +70,7 @@ const Register = () => {
 
             <div className='  py-6'>
                 <span className='flex justify-center'><BookOpen size={40} className='text-blue-600' /></span>
-                <h1 className=' text-4xl py-3 font-bold text-[#0a1a2f] text-center'>Create your account</h1>
+                <h1 className={` text-4xl py-3 font-bold ${themeToggle==="dark"?'text-white':'text-[#0a1a2f]'} text-center`}>Create your account</h1>
                 <p className='text-center text-sm font-semibold text-gray-400'>Or <Link className='text-blue-500' to={"/login"}>sign in to your existing account</Link></p>
                 <div className='my-8  w-1/2 mx-auto'>
                     <form onSubmit={handleSubmit} className='space-y-3'>

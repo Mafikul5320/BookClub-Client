@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 const Login = () => {
     const provider = new GoogleAuthProvider();
     const navigate = useNavigate()
-    const { SignIn, SignInGoogle } = use(AuthContext)
+    const { SignIn, SignInGoogle, themeToggle } = use(AuthContext)
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -24,7 +24,7 @@ const Login = () => {
                 timer: 1500
             });
             navigate("/")
-        }).catch(()=> {
+        }).catch(() => {
             Swal.fire({
                 icon: "error",
                 title: "Failed to Login!",
@@ -58,7 +58,7 @@ const Login = () => {
 
             <div className='  py-6'>
                 <span className='flex justify-center'><BookOpen size={40} className='text-blue-600' /></span>
-                <h1 className=' text-4xl py-3 font-bold text-[#0a1a2f] text-center'>Sign in to your account</h1>
+                <h1 className={`text-4xl py-3 font-bold ${themeToggle === "dark" ? 'text-white' : 'text-[#0a1a2f]'} text-center`}>Sign in to your account</h1>
                 <p className='text-center text-sm font-semibold text-gray-400'>Or <Link className='text-blue-500' to={"/register"}>create a new account</Link></p>
                 <div className='my-8  '>
                     <form onSubmit={handleSubmit} className='space-y-3'>
