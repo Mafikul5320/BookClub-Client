@@ -5,13 +5,13 @@ import { AuthContext } from '../../Context/AuthContext';
 import ThemeToggle from './Main/ThemeToggle';
 
 const Navber = () => {
-    const { user, SignOut, setUser, themeToggle } = use(AuthContext);
+    const { user, SignOut, setUser } = use(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
-    console.log(themeToggle);
+    // console.log(themeToggle);
 
     const HandelLogOut = () => {
-        SignOut().then(res => {
-            console.log(res);
+        SignOut().then(() => {
+            // console.log(res);
             setUser(null);
         });
     };
@@ -42,11 +42,15 @@ const Navber = () => {
                     }>
                         Create Group
                     </NavLink>
-                    <NavLink to={`/my-group/${user?.email}`} className={({ isActive }) =>
-                        isActive ? 'bg-blue-200 text-primary font-semibold px-3 py-1 rounded-sm' : 'font-bold hover:text-primary'
-                    }>
-                        My Groups
-                    </NavLink>
+                    {
+                        user && <>
+                            <NavLink to={`/my-group/${user?.email}`} className={({ isActive }) =>
+                                isActive ? 'bg-blue-200 text-primary font-semibold px-3 py-1 rounded-sm' : 'font-bold hover:text-primary'
+                            }>
+                                My Groups
+                            </NavLink>
+                        </>
+                    }
                 </div>
 
                 <div className='md:hidden'>
@@ -78,25 +82,25 @@ const Navber = () => {
                 <div className='md:hidden flex flex-col items-center space-y-3 pb-4'>
                     <NavLink to="/" className={({ isActive }) =>
                         isActive ? 'bg-blue-200 text-primary font-semibold px-3 py-1 rounded-sm w-full text-center' :
-                        'font-bold hover:text-primary w-full text-center'
+                            'font-bold hover:text-primary w-full text-center'
                     }>
                         Home
                     </NavLink>
                     <NavLink to="/all-group" className={({ isActive }) =>
                         isActive ? 'bg-blue-200 text-primary font-semibold px-3 py-1 rounded-sm w-full text-center' :
-                        'font-bold hover:text-primary w-full text-center'
+                            'font-bold hover:text-primary w-full text-center'
                     }>
                         All Groups
                     </NavLink>
                     <NavLink to="/create-group" className={({ isActive }) =>
                         isActive ? 'bg-blue-200 text-primary font-semibold px-3 py-1 rounded-sm w-full text-center' :
-                        'font-bold hover:text-primary w-full text-center'
+                            'font-bold hover:text-primary w-full text-center'
                     }>
                         Create Group
                     </NavLink>
                     <NavLink to={`/my-group/${user?.email}`} className={({ isActive }) =>
                         isActive ? 'bg-blue-200 text-primary font-semibold px-3 py-1 rounded-sm w-full text-center' :
-                        'font-bold hover:text-primary w-full text-center'
+                            'font-bold hover:text-primary w-full text-center'
                     }>
                         My Groups
                     </NavLink>

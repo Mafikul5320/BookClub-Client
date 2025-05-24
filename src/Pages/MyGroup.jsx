@@ -26,7 +26,7 @@ const MyGroup = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.modifiedCount > 0 || data.acknowledged) {
                     toast.success("Group Update Successful!");
                 } else {
@@ -43,7 +43,7 @@ const MyGroup = () => {
         fetch(`https://assignment-10-server-woad-two.vercel.app/create-group/data/${id}`, {
             method: "DELETE",
         }).then(res => res.json()).then(data => {
-            console.log(data)
+            // console.log(data)
             if (data.deletedCount) {
                 const groupData = infoData.filter(data => data._id !== id)
                 setInfoData(groupData)

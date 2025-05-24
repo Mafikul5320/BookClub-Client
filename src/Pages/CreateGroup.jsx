@@ -9,7 +9,7 @@ const CreateGroup = () => {
         const from = e.target;
         const fromData = new FormData(from);
         const createData = Object.fromEntries(fromData.entries())
-        console.log(createData)
+        // console.log(createData)
         fetch("https://assignment-10-server-woad-two.vercel.app/create-group", {
             method: "POST",
             headers: {

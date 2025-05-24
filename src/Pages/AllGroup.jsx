@@ -4,7 +4,7 @@ import { Link, useLoaderData } from 'react-router';
 
 const AllGroup = () => {
     const data = useLoaderData()
-    console.log(data)
+    // console.log(data)
     return (
         <div>
             <div className="flex flex-col md:flex-row gap-4 p-6  backdrop-blur-md shadow-lg border border-white/10 bg-gradient-to-br from-sky-900/60 to-indigo-900/60">

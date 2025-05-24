@@ -15,8 +15,8 @@ const Login = () => {
         const form = e.target;
         const fromData = new FormData(form)
         const { email, password } = Object.fromEntries(fromData.entries())
-        SignIn(email, password).then(res => {
-            console.log(res)
+        SignIn(email, password).then(() => {
+            // console.log(res)
             Swal.fire({
                 icon: "success",
                 title: "Login Successfull",

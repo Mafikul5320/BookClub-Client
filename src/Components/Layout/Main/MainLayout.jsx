@@ -8,7 +8,7 @@ import { useLoaderData } from 'react-router';
 const MainLayout = () => {
     const CardData = useLoaderData()
     const [card, setCard] = useState([])
-    console.log(CardData)
+    // console.log(CardData)
     useEffect(() => {
         setCard(CardData.slice(0,6))
     }, [CardData])

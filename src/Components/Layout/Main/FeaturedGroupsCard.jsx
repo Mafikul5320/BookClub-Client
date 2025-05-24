@@ -6,7 +6,7 @@ import { AuthContext } from '../../../Context/AuthContext';
 const FeaturedGroupsCard = ({ singleData }) => {
     const { themeToggle } = use(AuthContext);
     const { gp_name, description, available_time, displayName, photoURL, book_category, members, _id } = singleData
-    console.log(singleData)
+    // console.log(singleData)
     return (
         <Link to={`/group-details/${_id}`}>
             <div>

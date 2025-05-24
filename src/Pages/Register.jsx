@@ -1,7 +1,7 @@
 import { BookOpen } from 'lucide-react';
 import RegisterAnimation from '../../public/Animationlogin.json'
 import Lottie from 'lottie-react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { use, useState } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 const Register = () => {
     const { Register, UpdateUser, themeToggle } = use(AuthContext)
     const [error, setError] = useState("")
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -33,6 +34,7 @@ const Register = () => {
                 displayName,
                 photoURL
             }).then(() => {
+                navigate("/")
                 Swal.fire({
                     title: "Register Successfull!",
                     icon: "success",
@@ -52,8 +54,10 @@ const Register = () => {
                 },
                 body: JSON.stringify(allData),
                 // …
-            }).then(res => res.json()).then(data => console.log(data))
-            console.log(allData)
+            }).then(res => res.json()).then(() => {
+
+            })
+            // console.log(allData)
         }).catch(() => {
             Swal.fire({
                 title: "Already create account",
@@ -70,7 +74,7 @@ const Register = () => {
 
             <div className='  py-6'>
                 <span className='flex justify-center'><BookOpen size={40} className='text-blue-600' /></span>
-                <h1 className={` text-4xl py-3 font-bold ${themeToggle==="dark"?'text-white':'text-[#0a1a2f]'} text-center`}>Create your account</h1>
+                <h1 className={` text-4xl py-3 font-bold ${themeToggle === "dark" ? 'text-white' : 'text-[#0a1a2f]'} text-center`}>Create your account</h1>
                 <p className='text-center text-sm font-semibold text-gray-400'>Or <Link className='text-blue-500' to={"/login"}>sign in to your existing account</Link></p>
                 <div className='my-8  w-1/2 mx-auto'>
                     <form onSubmit={handleSubmit} className='space-y-3'>
