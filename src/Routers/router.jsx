@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                loader: () => fetch("http://localhost:3000/create-group/data"),
+                loader: () => fetch("https://assignment-10-server-woad-two.vercel.app/create-group/data"),
                 Component: MainLayout
             },
             {
@@ -37,19 +37,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/group-details/:id",
-                loader: ({ params }) => fetch(`http://localhost:3000/create-group/data/${params.id}`),
+                loader: ({ params }) => fetch(`https://assignment-10-server-woad-two.vercel.app/create-group/data/${params.id}`),
                 element: <PrivateRouter>
                     <GroupDetailsPage></GroupDetailsPage>
                 </PrivateRouter>
             },
             {
                 path: "/all-group/",
-                loader: () => fetch("http://localhost:3000/create-group/data"),
+                loader: () => fetch("https://assignment-10-server-woad-two.vercel.app/create-group/data"),
                 Component: AllGroup
             },
             {
                 path: "/my-group/:email",
-                loader: ({ params }) => fetch(`http://localhost:3000/create-group/${params.email}`),
+                loader: ({ params }) => fetch(`https://assignment-10-server-woad-two.vercel.app/create-group/${params.email}`),
                 element: <PrivateRouter>
                     <MyGroup></MyGroup>
                 </PrivateRouter>
@@ -57,7 +57,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "//view-Details/:id",
-                loader: ({ params }) => fetch(`http://localhost:3000/create-group/data/${params.id}`),
+                loader: ({ params }) => fetch(`https://assignment-10-server-woad-two.vercel.app/create-group/data/${params.id}`),
                 Component: MyGroupViewDetails
             },
             {

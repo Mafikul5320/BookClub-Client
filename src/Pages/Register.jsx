@@ -45,7 +45,7 @@ const Register = () => {
                 draggable: true
             });
             })
-            fetch("http://localhost:3000/users", {
+            fetch("https://assignment-10-server-woad-two.vercel.app/users", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

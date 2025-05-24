@@ -4,8 +4,10 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import { auth } from '../Firebase/Firebase.init';
 
 const AuthProvider = ({ children }) => {
+    const [themeToggle, setThemeToggle] = useState()
     const [user, setUser] = useState(null)
     const [Loader, setLoader] = useState(true)
+
 
     const Register = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -21,7 +23,8 @@ const AuthProvider = ({ children }) => {
     };
     const UpdateUser = (updateInfo) => {
         return updateProfile(auth.currentUser, updateInfo)
-    }
+    };
+
     useEffect(() => {
         const unsubscrib = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
@@ -46,7 +49,9 @@ const AuthProvider = ({ children }) => {
         setUser,
         SignOut,
         UpdateUser,
-        Loader
+        Loader,
+        setThemeToggle,
+        themeToggle
     }
 
     return (

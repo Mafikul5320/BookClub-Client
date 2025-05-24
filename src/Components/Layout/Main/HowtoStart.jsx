@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { Link } from 'react-router';
+import { AuthContext } from '../../../Context/AuthContext';
 
 const HowtoStart = () => {
+    const { themeToggle } = use(AuthContext);
     return (
         <div>
-            <section className="py-16 bg-white ">
+            <section className={`py-16 ${themeToggle === "dark" ? 'bg-gradient-to-br from-[#2c3e50] to-[#1c1c1e]' : 'bg-white'} `}>
                 <div className="container mx-auto px-4">
                     <Fade triggerOnce>
                         <h2 className="text-3xl font-bold mb-12 text-center">How to Start Your Own Reading Group</h2>
@@ -19,8 +21,8 @@ const HowtoStart = () => {
                                         1
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-semibold mb-2 text-[#0a1a2f]">Choose Your Focus</h3>
-                                        <p className="text-gray-600 font-medium">
+                                        <h3 className={`text-xl font-semibold mb-2 ${themeToggle === "dark" ? '': 'text-[#0a1a2f]'}`}>Choose Your Focus</h3>
+                                        <p className={`${themeToggle === "dark" ? 'text-[#87a2c5]': 'text-gray-600'} font-medium`}>
                                             Decide on the type of books your club will read. Will you focus on a specific genre, bestsellers, classics, or a mix? Having a clear focus helps attract members with similar interests.
                                         </p>
                                     </div>
@@ -31,8 +33,8 @@ const HowtoStart = () => {
                                         2
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-semibold mb-2 text-[#0a1a2f]">Create Your Group</h3>
-                                        <p className="text-gray-600 font-medium">
+                                        <h3  className={`text-xl font-semibold mb-2 ${themeToggle === "dark" ? '': 'text-[#0a1a2f]'}`}>Create Your Group</h3>
+                                        <p  className={`${themeToggle === "dark" ? 'text-[#87a2c5]': 'text-gray-600'} font-medium`}>
                                             Use our "Create Group" feature to set up your book club. Give it a descriptive name, write an engaging description, choose a meeting location, and set a start date for your first gathering.
                                         </p>
                                     </div>
@@ -43,8 +45,8 @@ const HowtoStart = () => {
                                         3
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-semibold mb-2 text-[#0a1a2f]">Invite Members</h3>
-                                        <p className="text-gray-600 font-medium">
+                                        <h3  className={`text-xl font-semibold mb-2 ${themeToggle === "dark" ? '': 'text-[#0a1a2f]'}`}>Invite Members</h3>
+                                        <p className={`${themeToggle === "dark" ? 'text-[#87a2c5]': 'text-gray-600'} font-medium`}>
                                             Share your group with friends or let the community discover it. Consider the optimal size for meaningful discussions—usually between 5 and 15 members works well.
                                         </p>
                                     </div>
@@ -55,8 +57,8 @@ const HowtoStart = () => {
                                         4
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-semibold mb-2 text-[#0a1a2f]">Start Reading Together</h3>
-                                        <p className="text-gray-600 font-medium">
+                                        <h3  className={`text-xl font-semibold mb-2 ${themeToggle === "dark" ? '': 'text-[#0a1a2f]'}`}>Start Reading Together</h3>
+                                        <p className={`${themeToggle === "dark" ? 'text-[#87a2c5]': 'text-gray-600'} font-medium`}>
                                             Begin your literary journey! Establish a regular meeting schedule, prepare thoughtful discussion questions, and create an inclusive atmosphere where everyone feels comfortable sharing their insights.
                                         </p>
                                     </div>

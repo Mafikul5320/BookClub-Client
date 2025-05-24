@@ -17,7 +17,7 @@ const MyGroup = () => {
         const fromdata = new FormData(from);
         const updateData = Object.fromEntries(fromdata.entries());
 
-        fetch(`http://localhost:3000/create-group/data/${id}`, {
+        fetch(`https://assignment-10-server-woad-two.vercel.app/create-group/data/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -40,7 +40,7 @@ const MyGroup = () => {
     };
 
     const HandelDelete = (id) => {
-        fetch(`http://localhost:3000/create-group/data/${id}`, {
+        fetch(`https://assignment-10-server-woad-two.vercel.app/create-group/data/${id}`, {
             method: "DELETE",
         }).then(res => res.json()).then(data => {
             console.log(data)
@@ -171,7 +171,7 @@ const MyGroup = () => {
 
                 <div className="mt-8 flex justify-end">
                     <button
-                        onClick={() => navigate('/createGroup')}
+                        onClick={() => navigate('/create-group')}
                         className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded transition-colors"
                     >
                         <span>Create New Book Club</span>
