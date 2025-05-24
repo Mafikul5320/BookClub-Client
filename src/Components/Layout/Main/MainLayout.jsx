@@ -16,7 +16,7 @@ const MainLayout = () => {
         <div>
             <Banner></Banner>
             <div className='my-8 md:w-11/13 w-11/12  mx-auto'>
-                <h1 className='text-3xl mb-8 md:mb-0 text-[#172331] text-center font-bold'>Featured Book Clubs</h1>
+                <h1 className='text-3xl mb-8 md:mb-0 md:pb-8 text-center font-bold'>Featured Book Clubs</h1>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
                     {
                         card.map(singleData => <FeaturedGroupsCard singleData={singleData} key={singleData._id}></FeaturedGroupsCard>)
