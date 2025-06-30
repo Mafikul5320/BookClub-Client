@@ -1,16 +1,47 @@
-BookClub 📚
-Connect, discover, and discuss books with fellow readers around the world.
+# 📚 Book Club
 
+**Book Club** is a modern, interactive web platform where users can create and join book discussion groups, categorized by genres and interests. It enables community-driven learning through reading.
+
+![Book Club Screenshot](https://your-screenshot-link.com/preview.png)
+
+---
+
+## 🔧 Technologies Used
+
+- **React.js** – For building the user interface
+- **Tailwind CSS** – For responsive and modern styling
+- **Firebase** – Authentication (Google & Email)
+- **Express.js + MongoDB** – Backend API and Database
+- **React Router** – Client-side routing
+- **Lottie-react** – Animated illustrations for login/register
+- **SweetAlert2** – Beautiful alert modals
+
+---
 🔗 Live Site: https://assignment-10-6f52b.web.app
 
-🌟 Features
-📚 Discover Books: Browse a curated selection of books and book clubs tailored to your interests.
+## 🌟 Features
 
-🤝 Join a Club: Join existing clubs or create your own to connect with like-minded readers.
+- 🔐 User Authentication with Google and Email/Password
+- 📊 Dashboard with stats (Total Groups, My Groups)
+- 📁 Create, view, and manage book groups
+- 🧠 Filter and search by category or name
+- 💬 Group details page with reading info and creator details
+- 🧑‍💻 Logged-in user info display
+- 📱 Fully responsive on all devices
 
-💬 Read & Discuss: Participate in scheduled discussions and share your insights with others.
+---
 
-🎯 Personalized Experience: Get club and book recommendations based on your reading preferences.
+## 📦 Dependencies
 
-🌐 Interactive Platform: User-friendly, responsive design with real-time updates and secure login.
+```json
+{
+  "react": "^18.2.0",
+  "react-router-dom": "^6.10.0",
+  "tailwindcss": "^3.3.0",
+  "firebase": "^11.0.0",
+  "lottie-react": "^2.4.0",
+  "sweetalert2": "^11.7.3",
+  "lucide-react": "^0.260.0"
+}
+
 
