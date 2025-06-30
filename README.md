@@ -37,15 +37,15 @@
 {
   "react": "^18.2.0",
   "react-router-dom": "^6.10.0",
-  "tailwindcss": "^3.3.0",
+  "tailwindcss": "^4.1",
   "firebase": "^11.0.0",
   "lottie-react": "^2.4.0",
   "sweetalert2": "^11.7.3",
   "lucide-react": "^0.260.0"
 }
-
+```
 1. Clone the client repository
-git clone https://github.com/your-username/bookclub-client.git
+git clone [https://github.com/your-username/bookclub-client.git](https://github.com/Mafikul5320/BookClub-Client.git)
 
 2. Go to the client directory
 cd bookclub-client
@@ -53,7 +53,7 @@ cd bookclub-client
 3. Install client dependencies
 npm install
 
-5. Run the development server
+4. Run the development server
 npm run dev
 
 
