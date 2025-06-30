@@ -5,7 +5,7 @@ import { AuthContext } from '../../Context/AuthContext';
 import ThemeToggle from './Main/ThemeToggle';
 
 const Navber = () => {
-    const { user, SignOut, setUser } = use(AuthContext);
+    const { user, SignOut, setUser,themeToggle } = use(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
     // console.log(themeToggle);
 
@@ -17,7 +17,7 @@ const Navber = () => {
     };
 
     return (
-        <div className='shadow-xl items-center'>
+        <div className={`shadow-xl items-center sticky top-0 z-50 ${themeToggle === "dark" ? 'bg-gray-800' : 'bg-white/60'} backdrop-blur-lg`}>
             <div className='flex justify-between items-center w-11/13 mx-auto px-4 py-4'>
                 <Link to={"/"}>
                     <div className='flex items-center space-x-2'>
@@ -37,17 +37,29 @@ const Navber = () => {
                     }>
                         All Groups
                     </NavLink>
-                    <NavLink to="/create-group" className={({ isActive }) =>
+
+                    <NavLink to="/About-us" className={({ isActive }) =>
                         isActive ? 'bg-blue-200 text-primary font-semibold px-3 py-1 rounded-sm' : 'font-bold hover:text-primary'
                     }>
-                        Create Group
+                        About Us
+                    </NavLink>
+                    <NavLink to="/contact" className={({ isActive }) =>
+                        isActive ? 'bg-blue-200 text-primary font-semibold px-3 py-1 rounded-sm' : 'font-bold hover:text-primary'
+                    }>
+                        Contact
                     </NavLink>
                     {
                         user && <>
-                            <NavLink to={`/my-group/${user?.email}`} className={({ isActive }) =>
+                            
+                            {/* <NavLink to="/create-group" className={({ isActive }) =>
                                 isActive ? 'bg-blue-200 text-primary font-semibold px-3 py-1 rounded-sm' : 'font-bold hover:text-primary'
                             }>
-                                My Groups
+                                Create Group
+                            </NavLink> */}
+                            <NavLink to="/Dashboard" className={({ isActive }) =>
+                                isActive ? 'bg-blue-200 text-primary font-semibold px-3 py-1 rounded-sm' : 'font-bold hover:text-primary'
+                            }>
+                                Dashboard
                             </NavLink>
                         </>
                     }

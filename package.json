@@ -10,13 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "type": "module",
     "@tailwindcss/vite": "^4.1.7",
     "firebase": "^11.8.0",
+    "framer-motion": "^12.19.2",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.511.0",
     "react": "^19.1.0",
     "react-awesome-reveal": "^4.3.1",
+    "react-countup": "^6.5.3",
     "react-dom": "^19.1.0",
     "react-router": "^7.6.0",
     "react-toastify": "^11.0.5",

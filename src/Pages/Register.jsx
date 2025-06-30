@@ -1,5 +1,5 @@
 import { BookOpen } from 'lucide-react';
-import RegisterAnimation from '../../public/Animationlogin.json'
+import RegisterAnimation from '../../public/Animationlogin.json';
 import Lottie from 'lottie-react';
 import { Link, useNavigate } from 'react-router';
 import { use, useState } from 'react';
@@ -7,84 +7,90 @@ import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
 
 const Register = () => {
-    const { Register, UpdateUser, themeToggle } = use(AuthContext)
-    const [error, setError] = useState("")
-    const navigate = useNavigate()
+    const { Register, UpdateUser, themeToggle } = use(AuthContext);
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const form = e.target;
-        const fromData = new FormData(form)
-        const { email, password, photoURL, displayName } = Object.fromEntries(fromData.entries())
-        setError("")
-        const passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/
-        if (!passwordRegEx.test(password) == true) {
-            setError("Password must have uppercase , lowercase , and 6 characters long.")
+        const fromData = new FormData(form);
+        const { email, password, photoURL, displayName } = Object.fromEntries(fromData.entries());
+        setError("");
+
+        const passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        if (!passwordRegEx.test(password)) {
+            setError("Password must have uppercase, lowercase, and 6+ characters.");
             return;
         }
-        const allData = {
-            email,
-            password,
-            photoURL,
-            displayName
-        }
 
-        Register(email, password).then(() => {
-            UpdateUser({
-                displayName,
-                photoURL
-            }).then(() => {
-                navigate("/")
-                Swal.fire({
-                    title: "Register Successfull!",
-                    icon: "success",
-                    draggable: true
+        const allData = { email, password, photoURL, displayName };
+
+        Register(email, password)
+            .then(() => {
+                UpdateUser({ displayName, photoURL })
+                    .then(() => {
+                        navigate("/");
+                        Swal.fire({
+                            title: "Register Successful!",
+                            icon: "success",
+                        });
+                    })
+                    .catch(() => {
+                        Swal.fire({
+                            title: "Profile Update Failed",
+                            icon: "error",
+                        });
+                    });
+
+                fetch("https://assignment-10-server-woad-two.vercel.app/users", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(allData),
                 });
-            }).catch(() => {
+            })
+            .catch(() => {
                 Swal.fire({
-                    title: "Register Failed",
+                    title: "Account already exists",
                     icon: "error",
-                    draggable: true
                 });
-            })
-            fetch("https://assignment-10-server-woad-two.vercel.app/users", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(allData),
-                // …
-            }).then(res => res.json()).then(() => {
-
-            })
-            // console.log(allData)
-        }).catch(() => {
-            Swal.fire({
-                title: "Already create account",
-                icon: "error",
-                draggable: true
             });
-        })
+    };
 
-    }
     return (
-        <div className='flex justify-center my-30 mx-auto'>
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-10 px-4 py-12 max-w-6xl mx-auto">
+            {/* Lottie Animation */}
+            <div className="w-full lg:w-1/2 hidden md:block">
+                <Lottie className="w-full max-w-md mx-auto" animationData={RegisterAnimation} loop />
+            </div>
 
-            <Lottie className='w-130' animationData={RegisterAnimation} loop={true} />
+            {/* Register Form */}
+            <div className="w-full lg:w-1/2 max-w-md">
+                <div className="text-center">
+                    <BookOpen size={40} className="text-blue-600 mx-auto" />
+                    <h1 className={`text-3xl md:text-4xl font-bold py-3 ${themeToggle === "dark" ? 'text-white' : 'text-[#0a1a2f]'}`}>
+                        Create your account
+                    </h1>
+                    <p className="text-sm font-semibold text-gray-500">
+                        Or <Link className="text-blue-500" to="/login">sign in to your existing account</Link>
+                    </p>
+                </div>
+                <div className="w-full lg:w-1/2  md:hidden">
+                    <Lottie className="w-full max-w-md mx-auto" animationData={RegisterAnimation} loop />
+                </div>
 
-            <div className='  py-6'>
-                <span className='flex justify-center'><BookOpen size={40} className='text-blue-600' /></span>
-                <h1 className={` text-4xl py-3 font-bold ${themeToggle === "dark" ? 'text-white' : 'text-[#0a1a2f]'} text-center`}>Create your account</h1>
-                <p className='text-center text-sm font-semibold text-gray-400'>Or <Link className='text-blue-500' to={"/login"}>sign in to your existing account</Link></p>
-                <div className='my-8  w-1/2 mx-auto'>
-                    <form onSubmit={handleSubmit} className='space-y-3'>
-                        <input type="text" name='displayName' placeholder="Enter name" className="input h-11 rounded-full  w-full" required />
-                        <input type="email" name='email' placeholder="Enter Email" className="input h-11 rounded-full  w-full" required />
-                        <input type="text" name='photoURL' placeholder="Photo URL" className="input h-11 rounded-full  w-full" required />
-                        <input type="password" name='password' placeholder="Enter Password" className="input h-11 rounded-full  w-full" required />
-                        <p className='text-red-500'>{error}</p>
-                        <button className='btn h-11  bg-[#362478] text-white rounded-full  w-full' type='submit'>Register</button>
-
+                <div className="mt-8">
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <input type="text" name="displayName" placeholder="Enter name" className="input h-11 rounded-full w-full" required />
+                        <input type="email" name="email" placeholder="Enter Email" className="input h-11 rounded-full w-full" required />
+                        <input type="text" name="photoURL" placeholder="Photo URL" className="input h-11 rounded-full w-full" required />
+                        <input type="password" name="password" placeholder="Enter Password" className="input h-11 rounded-full w-full" required />
+                        {error && <p className="text-red-500 text-sm">{error}</p>}
+                        <button type="submit" className="btn h-11 bg-[#362478] text-white rounded-full w-full">
+                            Register
+                        </button>
                     </form>
                 </div>
             </div>

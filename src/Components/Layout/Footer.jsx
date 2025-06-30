@@ -18,22 +18,22 @@ const Footer = () => {
                             Connecting readers through shared literary experiences. Join a club, discover new books, and engage in meaningful discussions.
                         </p>
                         <div className="flex space-x-4">
-                            <a
-                                href="#"
+                            <a target="_blank"
+                                href="https://www.facebook.com/mdmafikul.islam.3388"
                                 className="text-slate-400 hover:text-primary-400 transition-colors"
                                 aria-label="Facebook"
                             >
                                 <Facebook className="h-5 w-5" />
                             </a>
-                            <a
-                                href="#"
+                            <a target="_blank"
+                                href="https://x.com/?lang=en"
                                 className="text-slate-400 hover:text-primary-400 transition-colors"
                                 aria-label="Twitter"
                             >
                                 <Twitter className="h-5 w-5" />
                             </a>
-                            <a
-                                href="#"
+                            <a target="_blank"
+                                href="https://www.instagram.com/accounts/login/?hl=en"
                                 className="text-slate-400 hover:text-primary-400 transition-colors"
                                 aria-label="Instagram"
                             >

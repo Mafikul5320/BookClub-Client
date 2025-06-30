@@ -4,6 +4,9 @@ import BenefitsofJoining from './BenefitsofJoining';
 import HowtoStart from './HowtoStart';
 import FeaturedGroupsCard from './FeaturedGroupsCard';
 import { useLoaderData } from 'react-router';
+import JoinCommunity from '../JoinCommunity';
+import Review from '../Review';
+import PopularGenres from '../PopularGenres';
 
 const MainLayout = () => {
     const CardData = useLoaderData()
@@ -23,8 +26,11 @@ const MainLayout = () => {
                     }
                 </div>
             </div>
+            <PopularGenres></PopularGenres>
             <BenefitsofJoining></BenefitsofJoining>
             <HowtoStart></HowtoStart>
+            <JoinCommunity></JoinCommunity>
+            <Review></Review>
         </div>
     );
 };
