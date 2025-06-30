@@ -44,6 +44,7 @@
   "lucide-react": "^0.260.0"
 }
 ```
+```
 1. Clone the client repository
 git clone [https://github.com/your-username/bookclub-client.git](https://github.com/Mafikul5320/BookClub-Client.git)
 
@@ -55,6 +56,6 @@ npm install
 
 4. Run the development server
 npm run dev
-
+```
 
 
